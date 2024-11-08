@@ -4,6 +4,7 @@ import * as React from 'react';
 import {View, Text} from 'react-native';
 import {
   createStaticNavigation,
+  StackActions,
   StaticParamList,
   useNavigation,
 } from '@react-navigation/native';
@@ -19,6 +20,12 @@ function HomeScreen() {
 
     // (method) setOptions(options: Partial<{}>): void
     navigation.setOptions({});
+
+    // Property 'replace' does not exist on type 'Omit<NavigationProp<RootParamList>, "getState"> & { getState(): Readonly<{ key: string; index: number; routeNames: string[]; history?: unknown[] | undefined; routes: NavigationRoute<...>[]; type: string; stale: false; }> | undefined; }'.
+    navigation.replace();
+
+    // no typecheck here
+    navigation.dispatch(StackActions.popTo('123'));
   }, [navigation]);
 
   return (
